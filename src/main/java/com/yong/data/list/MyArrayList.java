@@ -135,7 +135,7 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
 
     @Override
     @SuppressWarnings("unchecked")
-    public MyList<T> sort(Comparator<T> comparator){
+    public MyList<T> sort(Comparator<? super T> comparator){
         Object[] temp = new Object[this.size];
         System.arraycopy(this.arr, 0, temp, 0, this.size);
         Arrays.sort((T[])temp, comparator);

@@ -14,6 +14,6 @@ interface MyList<T> extends Iterable<T> {
     int size();
     boolean isEmpty();
     MyList<T> sort();
-    MyList<T> sort(Comparator<T> comparator);
+    MyList<T> sort(Comparator<? super T> comparator);
     MyList<T> clone();
 }
