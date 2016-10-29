@@ -145,7 +145,7 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
 
     @Override
     public Iterator<T> iterator() {
-        return new MyArrayMyIterator<>();
+        return new MyArrayIterator();
     }
 
     private void checkValidIndex(int idx){
@@ -202,7 +202,7 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
         }
     }
 
-    private class MyArrayMyIterator<T> implements Iterator<T> {
+    private class MyArrayIterator implements Iterator<T> {
         private int cursor;
 
         @Override
