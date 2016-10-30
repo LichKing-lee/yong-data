@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by ChangYong on 2016. 10. 20..
  */
-public class MyArrayList<T> implements MyList<T>, Cloneable {
+public class YongArrayList<T> implements YongList<T>, Cloneable {
     private int size;
     private int capacity;
     private Object[] arr;
@@ -19,37 +19,37 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
         this.size = 0;
     }
 
-    public MyArrayList(){
+    public YongArrayList(){
         this(DEFAULT_CAPACITY);
     }
 
-    public MyArrayList(int capacity){
+    public YongArrayList(int capacity){
         this.capacity = capacity;
         this.arr = new Object[this.capacity];
     }
 
-    public MyArrayList(T[] t){
+    public YongArrayList(T[] t){
         this.arr = t.clone();
         this.size = t.length;
         this.capacity = t.length;
     }
 
-    public static <T> MyList<T> immutableMyList(T... t){
-        return new ImmutableMyArrayList<>(t);
+    public static <T> YongList<T> immutableMyList(T... t){
+        return new ImmutableYongArrayList<>(t);
     }
 
-    public static <T> MyList<T> mutableMyList(T... t){
-        return new MyArrayList<>(t);
+    public static <T> YongList<T> mutableMyList(T... t){
+        return new YongArrayList<>(t);
     }
 
-    public static <T> MyList<T> from(List<T> list){
-        MyList<T> myList = new MyArrayList<>(list.size());
+    public static <T> YongList<T> from(List<T> list){
+        YongList<T> yongList = new YongArrayList<>(list.size());
 
         for (T t : list) {
-            myList.add(t);
+            yongList.add(t);
         }
 
-        return myList;
+        return yongList;
     }
 
     @Override
@@ -124,22 +124,22 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
     }
 
     @Override
-    public MyList<T> sort(){
+    public YongList<T> sort(){
         Object[] temp = new Object[this.size];
         System.arraycopy(this.arr, 0, temp, 0, this.size);
         Arrays.sort(temp);
         @SuppressWarnings("unchecked")
-        MyList<T> result = mutableMyList((T[])temp);
+        YongList<T> result = mutableMyList((T[])temp);
         return result;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public MyList<T> sort(Comparator<? super T> comparator){
+    public YongList<T> sort(Comparator<? super T> comparator){
         Object[] temp = new Object[this.size];
         System.arraycopy(this.arr, 0, temp, 0, this.size);
         Arrays.sort((T[])temp, comparator);
-        MyList<T> result = mutableMyList((T[])temp);
+        YongList<T> result = mutableMyList((T[])temp);
         return result;
     }
 
@@ -170,10 +170,10 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
     }
 
     @Override
-    public MyList<T> clone(){
+    public YongList<T> clone(){
         try {
             @SuppressWarnings("unchecked")
-            MyList<T> result = (MyList<T>) super.clone();
+            YongList<T> result = (YongList<T>) super.clone();
             return result;
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
@@ -181,8 +181,8 @@ public class MyArrayList<T> implements MyList<T>, Cloneable {
         }
     }
 
-    private static class ImmutableMyArrayList<T> extends MyArrayList<T>{
-        private ImmutableMyArrayList(T[] t){
+    private static class ImmutableYongArrayList<T> extends YongArrayList<T> {
+        private ImmutableYongArrayList(T[] t){
             super(t);
         }
 

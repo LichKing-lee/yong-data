@@ -15,11 +15,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by ChangYong on 2016. 10. 20..
  */
 public class MyArrayListTest {
-    private MyList<Integer> list1;
+    private YongList<Integer> list1;
 
     @Before
     public void setUp(){
-        list1 = new MyArrayList<>();
+        list1 = new YongArrayList<>();
     }
 
     @Test
@@ -69,7 +69,7 @@ public class MyArrayListTest {
         list1.remove(1);
 
         assertThat(list1.toString(), is("[1, 3]"));
-        MyList<String> list = MyArrayList.mutableMyList("aa", "bb", "cc");
+        YongList<String> list = YongArrayList.mutableMyList("aa", "bb", "cc");
         list.remove(0);
         list.remove(0);
         assertThat(list.toString(), is("[cc]"));
@@ -96,7 +96,7 @@ public class MyArrayListTest {
         list1.add(1);
         list1.add(2);
         list1.add(3);
-        MyList<Integer> copyList = list1.clone();
+        YongList<Integer> copyList = list1.clone();
 
         assertThat(copyList, not(list1));
         assertThat(copyList.toString(), is(list1.toString()));
@@ -110,7 +110,7 @@ public class MyArrayListTest {
         list1.add(6);
         list1.add(1);
 
-        MyList<Integer> sortList = list1.sort();
+        YongList<Integer> sortList = list1.sort();
         assertThat(sortList.toString(), is("[1, 3, 5, 6, 7]"));
     }
 
@@ -122,18 +122,18 @@ public class MyArrayListTest {
         list1.add(6);
         list1.add(1);
 
-        MyList<Integer> sortList = list1.sort(Integer::compareTo);
+        YongList<Integer> sortList = list1.sort(Integer::compareTo);
         assertThat(sortList.toString(), is("[1, 3, 5, 6, 7]"));
 
         assertThat(list1.toString(), is("[5, 3, 7, 6, 1]"));
 
-        MyList<Integer> sortList2 = list1.sort(Integer::compare);
+        YongList<Integer> sortList2 = list1.sort(Integer::compare);
         assertThat(sortList2.toString(), is("[1, 3, 5, 6, 7]"));
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void immutable_test(){
-        MyList<Integer> list = MyArrayList.immutableMyList(1, 2, 3, 4, 5);
+        YongList<Integer> list = YongArrayList.immutableMyList(1, 2, 3, 4, 5);
 
         assertThat(list.toString(), is("[1, 2, 3, 4, 5]"));
         list.add(6);
@@ -173,11 +173,11 @@ public class MyArrayListTest {
     public void from_test(){
         List<Integer> list = Arrays.asList(5, 6, 3, 4, 2);
 
-        MyList<Integer> myList = MyArrayList.from(list);
+        YongList<Integer> yongList = YongArrayList.from(list);
 
-        assertThat(myList.toString(), is("[5, 6, 3, 4, 2]"));
+        assertThat(yongList.toString(), is("[5, 6, 3, 4, 2]"));
 
-        MyList<Integer> result = myList.sort();
+        YongList<Integer> result = yongList.sort();
 
         assertThat(result.toString(), is("[2, 3, 4, 5, 6]"));
     }

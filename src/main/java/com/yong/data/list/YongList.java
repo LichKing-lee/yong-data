@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * Created by ChangYong on 2016. 10. 20..
  */
-interface MyList<T> extends Iterable<T> {
+interface YongList<T> extends Iterable<T> {
     T add(T t);
     T set(int idx, T t);
     T get(int idx);
@@ -13,7 +13,8 @@ interface MyList<T> extends Iterable<T> {
     boolean contains(T t);
     int size();
     boolean isEmpty();
-    MyList<T> sort();
-    MyList<T> sort(Comparator<? super T> comparator);
-    MyList<T> clone();
+    YongList<T> sort();
+    YongList<T> sort(Comparator<? super T> comparator);
+    YongList<T> clone();
+    String toString();
 }

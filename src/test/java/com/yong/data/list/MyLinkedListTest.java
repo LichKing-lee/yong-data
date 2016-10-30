@@ -1,7 +1,6 @@
 package com.yong.data.list;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -15,123 +14,123 @@ import static org.hamcrest.core.IsNull.notNullValue;
  * Created by ChangYong on 2016. 10. 29..
  */
 public class MyLinkedListTest {
-    private MyList<String> myList;
+    private YongList<String> yongList;
 
     @Before
     public void setUp(){
-        myList = new MyLinkedList<>();
+        yongList = new YongLinkedList<>();
 
-        myList.add("a");
-        myList.add("b");
-        myList.add("c");
+        yongList.add("a");
+        yongList.add("b");
+        yongList.add("c");
     }
 
     @Test
     public void size_test(){
-        assertThat(myList.size(), is(3));
+        assertThat(yongList.size(), is(3));
     }
 
     @Test
     public void toString_empty_test(){
-        MyList<String> strings = new MyLinkedList<>();
+        YongList<String> strings = new YongLinkedList<>();
         assertThat(strings.toString(), is("[]"));
     }
 
     @Test
     public void toString_test(){
-        assertThat(myList.toString(), is("[a, b, c]"));
+        assertThat(yongList.toString(), is("[a, b, c]"));
     }
 
     @Test
     public void get_test(){
         //then
-        assertThat(this.myList.get(0), is("a"));
-        assertThat(this.myList.get(1), is("b"));
-        assertThat(this.myList.get(2), is("c"));
+        assertThat(this.yongList.get(0), is("a"));
+        assertThat(this.yongList.get(1), is("b"));
+        assertThat(this.yongList.get(2), is("c"));
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void arrayException_test(){
-        myList.set(10, "hello");
-        myList.get(10);
-        myList.remove(10);
+        yongList.set(10, "hello");
+        yongList.get(10);
+        yongList.remove(10);
     }
 
     @Test
     public void set_test(){
-        myList.set(1, "hello");
+        yongList.set(1, "hello");
 
-        assertThat(myList.size(), is(3));
-        assertThat(myList.get(1), is("hello"));
-        assertThat(myList.toString(), is("[a, hello, c]"));
+        assertThat(yongList.size(), is(3));
+        assertThat(yongList.get(1), is("hello"));
+        assertThat(yongList.toString(), is("[a, hello, c]"));
     }
 
     @Test
     public void remove_last_node_test(){
-        String str = myList.remove(2);
+        String str = yongList.remove(2);
 
-        assertThat(myList.size(), is(2));
+        assertThat(yongList.size(), is(2));
         assertThat(str, is("c"));
-        assertThat(myList.toString(), is("[a, b]"));
+        assertThat(yongList.toString(), is("[a, b]"));
     }
 
     @Test
     public void remove_test(){
-        String str = myList.remove(1);
+        String str = yongList.remove(1);
 
-        assertThat(myList.size(), is(2));
+        assertThat(yongList.size(), is(2));
         assertThat(str, is("b"));
-        assertThat(myList.toString(), is("[a, c]"));
+        assertThat(yongList.toString(), is("[a, c]"));
     }
 
     @Test
     public void remove_first_node_test(){
-        String str = myList.remove(0);
+        String str = yongList.remove(0);
 
-        assertThat(myList.size(), is(2));
+        assertThat(yongList.size(), is(2));
         assertThat(str, is("a"));
-        assertThat(myList.toString(), is("[b, c]"));
+        assertThat(yongList.toString(), is("[b, c]"));
     }
 
     @Test
     public void contains_test(){
-        assertTrue(myList.contains("a"));
-        assertTrue(!myList.contains("t"));
+        assertTrue(yongList.contains("a"));
+        assertTrue(!yongList.contains("t"));
     }
 
     @Test
     public void clone_test(){
-        MyList<String> cloneList = myList.clone();
+        YongList<String> cloneList = yongList.clone();
 
-        assertThat(myList.size(), is(cloneList.size()));
-        assertThat(myList.toString(), is(cloneList.toString()));
+        assertThat(yongList.size(), is(cloneList.size()));
+        assertThat(yongList.toString(), is(cloneList.toString()));
     }
 
     @Test
     public void sort_comparable_test(){
-        myList.add("c");
-        myList.add("b");
-        myList.add("a");
+        yongList.add("c");
+        yongList.add("b");
+        yongList.add("a");
 
-        MyList<String> sortList = myList.sort();
+        YongList<String> sortList = yongList.sort();
 
         assertThat(sortList.toString(), is("[a, a, b, b, c, c]"));
     }
 
     @Test
     public void sort_comparator_test(){
-        myList.add("c");
-        myList.add("b");
-        myList.add("a");
+        yongList.add("c");
+        yongList.add("b");
+        yongList.add("a");
 
-        MyList<String> sortList = myList.sort(String::compareTo);
+        YongList<String> sortList = yongList.sort(String::compareTo);
 
         assertThat(sortList.toString(), is("[a, a, b, b, c, c]"));
     }
 
     @Test
     public void iterator_test(){
-        Iterator<String> iter = myList.iterator();
+        Iterator<String> iter = yongList.iterator();
 
         assertThat(iter, is(notNullValue()));
 
@@ -143,7 +142,7 @@ public class MyLinkedListTest {
         assertThat(str, is("abc"));
 
         String str2 = "";
-        for(String s : myList){
+        for(String s : yongList){
             str2 += s;
         }
 
